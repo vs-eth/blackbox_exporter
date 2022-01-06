@@ -5,7 +5,7 @@ Description=Prometheus blackbox exporter
 Type=simple
 User={{ blackbox_user }}
 Group={{ blackbox_user }}
-ExecStart={{ blackbox_dir }}/blackbox_exporter
+ExecStart={{ blackbox_dir }}/blackbox_exporter --config.file="{{ blackbox_dir }}/blackbox.yml"
 
 [Install]
 WantedBy=multi-user.target
