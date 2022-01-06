@@ -1,0 +1,11 @@
+[Unit]
+Description=Prometheus blackbox exporter
+
+[Service]
+Type=simple
+User={{ blackbox_user }}
+Group={{ blackbox_user }}
+ExecStart={{ blackbox_dir }}/blackbox_exporter
+
+[Install]
+WantedBy=multi-user.target
