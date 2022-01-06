@@ -19,6 +19,9 @@
     checksum: "{{ blackbox_checksum }}"
     url: "{{ blackbox_url }}"
     dest: "{{ blackbox_dir }}/blackbox_exporter"
+    owner: "{{ blackbox_user }}"
+    group: "{{ blackbox_user }}"
+    mode: 0744
   register: blackbox_download
   notify: restart blackbox_exporter
 
