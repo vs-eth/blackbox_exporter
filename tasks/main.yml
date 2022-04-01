@@ -24,7 +24,7 @@
 - name: Untar the blackbox archive
   become: True
   unarchive:
-    src: "/tmp//blackbox_exporter.tar.gz"
+    src: "/tmp/blackbox_exporter.tar.gz"
     dest: "{{ blackbox_dir }}"
     owner: "{{ blackbox_user }}"
     group: "{{ blackbox_user }}"
