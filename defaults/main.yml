@@ -1,5 +1,11 @@
 blackbox_version: "0.19.0"
 blackbox_url: "https://github.com/prometheus/blackbox_exporter/releases/download/v{{ blackbox_version }}/blackbox_exporter-{{ blackbox_version }}.linux-amd64.tar.gz"
 blackbox_checksum: "sha256: af2ae1394c4f9b46962ac1510e1dacac78115c11e625991fb6c54825d2240896"
+
+
 blackbox_dir: "/opt/blackbox_exporter"
 blackbox_user: blackbox_exporter
+
+# Address blackbox-exporter listens to. If you want it to be accessible from
+# outside, set it to e.g. ":9115"
+blackbox_listen_address: "127.0.0.1:9115"
