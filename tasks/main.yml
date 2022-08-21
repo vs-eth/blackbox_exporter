@@ -20,8 +20,8 @@
     checksum: "{{ blackbox_checksum }}"
     url: "{{ blackbox_url }}"
     dest: "/tmp/blackbox_exporter.tar.gz"
+    mode: 0744
   register: blackbox_download
-  mode: 0744
 
 - name: Untar the blackbox archive
   become: true
