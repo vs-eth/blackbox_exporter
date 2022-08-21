@@ -1,6 +1,6 @@
 ---
 - name: restart blackbox_exporter
-  become: True
-  service:
+  become: true
+  ansible.builtin.service:
     name: blackbox_exporter
     state: restarted
