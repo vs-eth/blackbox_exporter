@@ -1,50 +1,53 @@
 - name: Create the blackbox user
-  become: True
-  user:
+  become: true
+  ansible.builtin.user:
     name: "{{ blackbox_user }}"
-    system: yes
+    system: true
     state: present
 
 - name: "Ensure {{ blackbox_dir }} exists"
-  become: True
-  file:
+  become: true
+  ansible.builtin.file:
     dest: "{{ blackbox_dir }}"
     owner: "{{ blackbox_user }}"
     group: "{{ blackbox_user }}"
     state: directory
+    mode: 0744
 
 - name: Download blackbox_exporter
-  become: True
-  get_url:
+  become: true
+  ansible.builtin.get_url:
     checksum: "{{ blackbox_checksum }}"
     url: "{{ blackbox_url }}"
     dest: "/tmp/blackbox_exporter.tar.gz"
   register: blackbox_download
+  mode: 0744
 
 - name: Untar the blackbox archive
-  become: True
-  unarchive:
+  become: true
+  ansible.builtin.unarchive:
     src: "/tmp/blackbox_exporter.tar.gz"
     dest: "{{ blackbox_dir }}"
     owner: "{{ blackbox_user }}"
     group: "{{ blackbox_user }}"
-    mode: 0744
-    remote_src: True
+    mode: 0644
+    remote_src: true
     extra_opts: "--strip-components=1"
   when: blackbox_download is changed
   notify: restart blackbox_exporter
 
 - name: Configure systemd service
-  become: True
-  template:
+  become: true
+  ansible.builtin.template:
     src: blackbox_exporter.service.j2
     dest: /etc/systemd/system/blackbox_exporter.service
+    mode: 0644
   notify: restart blackbox_exporter
 
 - name: Enable and start the blackbox_exporter service
-  become: True
-  systemd:
-    daemon_reload: yes
+  become: true
+  ansible.builtin.systemd:
+    daemon_reload: true
     name: blackbox_exporter.service
-    enabled: yes
+    enabled: true
     state: started
