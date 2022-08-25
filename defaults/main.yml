@@ -1,6 +1,6 @@
 blackbox_version: "0.22.0"
 blackbox_url: "https://github.com/prometheus/blackbox_exporter/releases/download/v{{ blackbox_version }}/blackbox_exporter-{{ blackbox_version }}.linux-amd64.tar.gz"
-blackbox_checksum: "sha256: af2ae1394c4f9b46962ac1510e1dacac78115c11e625991fb6c54825d2240896"
+blackbox_checksum: "sha256: 9dbdb51187d9f4ad93b18199414f845a2b8ac5139861bb4d1e037dabd91aac24"
 
 
 blackbox_dir: "/opt/blackbox_exporter"
